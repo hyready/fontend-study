@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="item ,index in list">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="value ,key ,index in obj">{{key}}---{{value}}---{{index}}</li>
+        </ul>
+    </div>
+
+    <script>
+        //渲染列表指令
+        // 数组：
+        // v-for="value,index in arr"
+        // 对象：v-for="vulue,key,index in obj"
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                list: [1, 2, 3],
+                obj: {
+                    a: 1,
+                    b: 2,
+                    c: 3,
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

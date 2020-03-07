@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="message" />
+        <input type="checkbox" v-model="checked" />
+        <p v-bind:title="message">{{message}}</p>
+
+    </div>
+
+    <script>
+        // Vue中绑定事件//--双向绑定
+        // v-model="表达式"
+
+        // v-model 会忽略所有表单元素的 value、checked、selected attribute 
+        // 的初始值而总是将 Vue 实例的数据作为数据来源。
+        // 你应该通过 JavaScript 在组件的 data 选项中声明初始值。
+        let message = 'hello world';
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                message,
+                checked: true,
+            },
+
+        })
+    </script>
+</body>
+
+</html>

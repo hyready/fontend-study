@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件基础</title>
+    <script src="../../../src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+        <cpnc2></cpnc2>
+
+    </div>
+    <script>
+        // 1.注册全局组件的语法糖
+        Vue.component('cpn1', {
+            template: `
+            <div>
+            <h2>标题</h2>
+            <p> 内容</p>
+            </div>`
+        })
+
+        //root组件
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: { //注册局部组件             
+                cpnc2: {
+                    template: `
+            <div>
+            <h2>标题</h2>
+            <p> 内容</p>
+            </div>`
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

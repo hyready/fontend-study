@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+
+    </style>
+    <script>
+        var arr = [1, 2, 3, 4];
+        // 把数组中每一个属性X2，存在数组中
+
+        // 命令式
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            newArr.push(arr[i] * 2)
+        }
+        console.log(newArr);
+
+        // 声明式
+        let newArr2 = arr.map(item => item * 2);
+        console.log(newArr2);
+
+
+        //声明式渲染理解
+        // dom状态只是数据结构状态的一个映射
+        // 所有的逻辑尽可能在状态的层面去进行
+        // 当状态改变了，view会被框架自动更新到合理的状态
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{miaov.ketang}}</p>
+    </div>
+    <script>
+        let vm = new Vue({ //只有计划好的数据，才能做响应reactive
+                el: '#app',
+                data: {
+                    msg: 'hello',
+                    miaov: {},
+                }
+
+            })
+            //这样是不能做响应的  vm.miaov.ketang = '我是新加的';
+            //改写属性的值，重新赋值
+            // vm.miaov = {
+            //     ketang: '改写属性的值，重新赋值'
+            // }
+            //改进：
+        vm.miaov = Object.assign({}, vm.miaov, {
+            ketang: '新的'
+        })
+
+        //调用vue的静态方法set（静态方法挂载在函数上的方法，调用的时候同过函数调用）
+        // 语法： Vue.set(target, prop, value)
+        // Vue.set(vm.miaov, 'ketang', '我是新加的');
+        //调用实例上的方法$set（通过实例调用原型上的方法）
+        // vm.$set(target, prop, value)
+        //vm.$set(vm.miaov, 'ketang', '我是')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        
+        #div2 {
+            position: absolute;
+            left: 300px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div id="div1" v-drag.limit></div>
+        <div id="div2" v-drag></div>
+
+        <!--<drag>-->
+        <!--<div></div>-->
+        <!--</drag>-->
+
+    </div>
+
+    <script src="./src/vue.js"></script>
+    <script>
+        /*
+         * 创建自定义的指令
+         * */
+        Vue.directive('drag', {
+            // 当指令绑定到元素上的时候执行
+            bind(el, binding) {
+                // console.log('bind');
+                // 当前指令绑定的dom元素
+                //console.log(el);
+                // 指令传入的参数、修饰符、值  v-指令名称:参数.修饰符=值
+                // console.log(binding)
+
+                el.onmousedown = function(e) {
+                    let disX = e.clientX - el.offsetLeft;
+                    let disY = e.clientY - el.offsetTop;
+
+                    document.onmousemove = function(e) {
+
+                        let L = e.clientX - disX;
+                        let T = e.clientY - disY;
+
+                        if (binding.modifiers.limit) {
+                            if (L < 0) {
+                                L = 0;
+                            }
+                        }
+
+                        el.style.left = L + 'px';
+                        el.style.top = T + 'px';
+                    };
+
+                    document.onmouseup = function() {
+                        document.onmousemove = null;
+                    };
+
+                    return false;
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>

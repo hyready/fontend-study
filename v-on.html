@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-on:input="inputHandle" />
+        <p v-bind:title="message">{{message}}</p>
+        <p> {{fn()}}</p>
+    </div>
+
+    <script>
+        // Vue中绑定事件//
+        // v - on: 事件名 = "表达式" --绑定事件监听器
+
+        let message = 'hello world';
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                message
+            },
+            methods: { //定义方法，方法中的this都指向实例
+                fn() {
+                    console.log(123)
+                    return 123
+                },
+                inputHandle(ev) { //
+                    console.log(this === vm)
+                    console.log(ev.target.value);
+                    this.message = ev.target.value;
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

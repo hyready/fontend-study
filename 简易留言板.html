@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="val" />
+        <input type="button" value="发送" v-on:click="sendHandle" />
+        <ul>
+            <li v-for="item in list">{{item.title}}</li>
+        </ul>
+    </div>
+    <script>
+        let list = [{
+            id: 123,
+            title: '努力学习',
+        }, {
+            id: 456,
+            title: '努力',
+        }, {
+            id: 789,
+            title: '学习',
+        }]
+        new Vue({
+            el: '#app',
+            data: {
+                list,
+                val: '',
+            },
+            methods: {
+                sendHandle() {
+                    this.list.push({
+                        id: Date.now(),
+                        title: this.val
+                    })
+                    this.val = '';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

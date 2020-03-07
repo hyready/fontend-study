@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{list}}</p>
+    </div>
+    <script>
+        //         提供观察数组的变异方法，使用这些方法将会触发视图更新Vue 
+        //         将被侦听的数组的变异方法进行了包裹，所以它们也将会触发视图更新。
+        //         这些被包裹过的方法包括：
+        // push()
+        // pop()
+        // shift()
+        // unshift()
+        // splice()
+        // sort()
+        // reverse()
+        let vm = new Vue({
+                el: '#app',
+                data: {
+                    list: [1, 2, 3]
+                }
+            })
+            // vm.list.push(5);
+            //同过下标改变值不可以
+            //list[0]='miaov'
+            // =>这样可以
+            // vm.list.splice(0, 1, 'miaov');
+            //length是不能改变原数组的
+            // vm.list.length = 1;===>
+        vm.list.splice(1);
+    </script>
+</body>
+
+</html>

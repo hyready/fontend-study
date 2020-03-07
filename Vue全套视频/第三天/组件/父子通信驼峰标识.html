@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父组件向子组件</title>
+    <script src="../../../src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :title="title" :movies="movies" :my-child-message="message"></cpn>
+
+    </div>
+    <template id="cpn">
+      <div>
+        <h2>{{title}}</h2>
+        <p> {{movies}}</p>
+        <p>{{myChildMessage}}</p>
+        </div>
+    </template>
+
+    <script>
+        //父传子 props
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {}
+            },
+            // props: ['title', 'movies'],
+            props: {
+                title: {
+                    type: String,
+                    default: '默认值',
+                    required: true
+                },
+                movies: { //类型是array/object 默认值必须是一个函数
+                    type: Array,
+                    default () {
+                        return []
+                    }
+                },
+                myChildMessage: {
+                    type: String,
+                    default: ''
+                }
+            }
+
+        }
+        const app = new Vue({
+            el: '#app',
+            data: {
+                title: '标题',
+                movies: ['小孩', '海泽王', '大犀牛'],
+                message: 'nihao'
+            },
+            components: {
+                cpn,
+
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

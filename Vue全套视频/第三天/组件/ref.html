@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父组件向子组件</title>
+    <script src="../../../src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-cpn ref="name"></my-cpn>
+        <my-cpn></my-cpn>
+        <button @click="handle">点击</button>
+
+    </div>
+    <template id="cpn">
+      <div>我是子组件</div>
+
+    </template>
+
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                handle() {
+                    console.log(this.$refs)
+                    this.$refs.name.getStyle()
+                }
+            },
+            components: {
+                'my-cpn': {
+                    template: `#cpn`,
+                    methods: {
+                        getStyle() {
+                            console.log('我是子组件')
+                        }
+                    }
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

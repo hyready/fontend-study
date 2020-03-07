@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+    <!-- 表单元素自带交互属性 -->
+    <div id="app">
+        <input type="text" />
+        <p v-bind:title="message">{{message}}</p>
+        <p v-bind:title="1+1">{{1+1}}</p>
+    </div>
+
+    <script>
+        // Vue中绑定事件//
+        // 指令：
+        // 是一种特殊的自定义行间属性，以v-开头
+        // 将数据和dom做关联，当表达式的值改变时，响应式的作用在视图
+        // 预期的值为JavaScript表达式
+        // v-bind:属性名="表达式"
+        // 动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+        let message = 'hello world';
+        new Vue({
+            el: '#app',
+            data: {
+                message
+            }
+        })
+    </script>
+</body>
+
+</html>

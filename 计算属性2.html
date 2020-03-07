@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+        <p>{{message}}</p>
+        <p>{{reverseMessage}}</p>
+
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'miaovketang',
+            },
+            computed: { //计算属性会把结果缓存，可在模板中反复使用
+                //计算属性中依赖data中的数据，数据变化，也会跟着变化
+                reverseMessage() {
+                    return this.message.split('').reverse().join('');
+                },
+
+            }
+        })
+    </script>
+</body>
+
+</html>

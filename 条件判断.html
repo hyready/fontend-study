@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="checked">
+        <p v-if="checked">{{checked}}</p>
+        <p v-show="checked">{{checked}}</p>
+        <p>{{checked}}</p>
+
+        <template v-if="checked">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+          </template>
+    </div>
+    <script>
+        // 条件判断：
+        // v-if="表达式" true 存在，false删除元素
+        // v-show="表达式" true 显示 false 不显示
+        // 初始页面根据条件判断是否要渲染某一块的模板，使用v-if
+        // 频繁的切换模板的显示与隐藏使用v-show
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                miaov: 'miaov',
+                checked: true
+            }
+        })
+    </script>
+</body>
+
+</html>

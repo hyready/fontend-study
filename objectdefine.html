@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //访问器属性
+        let data = {
+            title: '新闻'
+        }
+        var val = '新的值';
+
+        Object.defineProperty(data, 'title', {
+            get() {
+                console.log('我访问数据了');
+                return val
+            },
+            set(newValue) {
+                console.log('设置新值');
+                return val = newValue
+            }
+        })
+        console.log(data.title)
+    </script>
+</body>
+
+</html>

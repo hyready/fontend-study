@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button id="btn">改变数据</button>
+        <h2 id="title">这是标题</h2>
+    </div>
+    <script>
+        let data = {
+                title: '新闻'
+            }
+            // 数据劫持，转成getter,setter
+        observer(data);
+
+        function observer(obj) {
+            Object.keys(obj).forEach(item => {
+                defineRactive(obj, obj[item], item)
+            });
+        }
+
+        function defineRactive(obj, key, value) {
+            Object.defineProperty(obj, key, {
+                get() {
+                    return value;
+                },
+                set(newValue) {
+                    value = newValue;
+                    title.innerHTML = newValue;
+                }
+            })
+        }
+        console.log(data)
+        var title = document.getElementById('title');
+        var btn = document.getElementById('btn');
+
+        title.innerHTML = data.title;
+    </script>
+</body>
+
+</html>

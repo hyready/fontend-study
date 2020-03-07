@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../src/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn>
+            <template v-slot:default="slot">
+              <ul>
+                <li v-for="item in (slot.data.join('-').split('-'))">
+                  {{item}}-
+                </li>
+              </ul>
+            </template>
+        </cpn>
+
+
+
+
+    </div>
+    <template id="cpn">
+      <div>
+      <slot :data="pLanguages">
+        <ul>
+          <li v-for="item in pLanguages">{{item}}</li>
+        </ul>
+      </slot>
+      </div>
+      </template>
+
+    <script>
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    pLanguages: ['css', 'java', 'go', 'c++', 'c#'],
+                }
+            }
+
+        }
+        new Vue({
+            el: '#app',
+            data: {},
+            components: {
+                'cpn': cpn,
+            }
+
+
+        })
+    </script>
+</body>
+
+
+</html>

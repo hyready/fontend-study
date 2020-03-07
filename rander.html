@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg {
+            background: yellow;
+        }
+    </style>
+    <script src="./src/vue.js"></script>
+
+</head>
+
+<body>
+    <!--模板-->
+    <div id="demo"></div>
+    <script>
+        //数据
+        let obj = {
+            html: "<div>hello,miaov</div>",
+            abc: 1
+        };
+
+        var vm = new Vue({
+            el: "#demo",
+            data: obj,
+            render(creatElement) { //creatElement(标签名,{数据对象},子元素)
+                return creatElement('ul', {
+                    class: {
+                        bg: true
+                    },
+                    style: {
+                        fontSize: '50px'
+                    },
+                    attrs: {
+                        abc: 'miaov'
+                    },
+                    domProps: {
+                        innerHTML: "<li> 我是html</li>"
+                    }
+                }, [
+                    creatElement('li', 1),
+                    creatElement('li', 1),
+                    creatElement('li', 1)
+
+                ])
+            }
+
+
+        });
+    </script>
+</body>
+
+
+</html>
